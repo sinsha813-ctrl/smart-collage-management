@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Smart College Management System</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background: #f1f5f9;
+    color: #333;
+}
+
+header {
+    background: #172554;
+    color: white;
+    padding: 25px;
+    text-align: center;
+}
+
+header h1 {
+    font-size: 25px;
+    margin-bottom: 10px;
+}
+
+nav {
+    background: #1e3a8a;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    padding: 12px;
+}
+
+nav button {
+    background: transparent;
+    color: white;
+    border: none;
+    padding: 12px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+nav button:hover {
+    background: #2563eb;
+    border-radius: 5px;
+}
+
+.hero {
+    background: #dbeafe;
+    text-align: center;
+    padding: 65px 20px;
+}
+
+.hero h2 {
+    font-size: 30px;
+    color: #172554;
+    margin-bottom: 15px;
+}
+
+.hero p {
+    font-size: 17px;
+    line-height: 1.6;
+}
+
+.container {
+    padding: 25px;
+    max-width: 1100px;
+    margin: auto;
+}
+
+.section {
+    display: none;
+}
+
+.active {
+    display: block;
+}
+
+.card {
+    background: white;
+    padding: 25px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    box-shadow: 0 3px 10px #ddd;
+}
+
+.card h2 {
+    color: #1e3a8a;
+    margin-bottom: 15px;
+}
+
+.card p {
+    line-height: 1.8;
+}
+
+input, textarea, select {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+}
+
+button.submit {
+    background: #2563eb;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button.submit:hover {
+    background: #1d4ed8;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+    background: white;
+}
+
+th, td {
+    padding: 12px;
+    border: 1px solid #ddd;
+    text-align: left;
+}
+
+th {
+    background: #dbeafe;
+}
+
+ul {
+    padding-left: 25px;
+    line-height: 2;
+}
+
+.features {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+}
+
+.feature {
+    background: white;
+    padding: 25px;
+    text-align: center;
+    border-radius: 10px;
+    box-shadow: 0 3px 8px #ddd;
+}
+
+.feature h3 {
+    color: #1e3a8a;
+    margin-bottom: 10px;
+}
+
+footer {
+    background: #172554;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    margin-top: 30px;
+}
+
+@media(max-width:600px) {
+    header h1 {
+        font-size: 20px;
+    }
+
+    .container {
+        padding: 12px;
+    }
+
+    .hero h2 {
+        font-size: 24px;
+    }
+
+    table {
+        font-size: 12px;
+    }
+
+    th, td {
+        padding: 7px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <h1>SMART COLLEGE MANAGEMENT SYSTEM</h1>
+    <p>One Platform for Students and Teachers</p>
+</header>
+
+<nav>
+    <button onclick="showPage('home')">Home</button>
+    <button onclick="showPage('college')">College Info</button>
+    <button onclick="showPage('exams')">Exam Schedule</button>
+    <button onclick="showPage('programs')">Programs</button>
+    <button onclick="showPage('assignments')">Assignments</button>
+    <button onclick="showPage('results')">Results</button>
+    <button onclick="showPage('announcements')">Announcements</button>
+</nav>
+
+<div class="container">
+
+<!-- HOME PAGE -->
+
+<div id="home" class="section active">
+
+<div class="hero">
+    <h2>Welcome to Our College Portal</h2>
+
+    <p>
+    A smart digital platform to manage college
+    information, examination schedules,
+    assignments, programs and results.
+    </p>
+</div>
+
+<h2 style="margin:25px 0;">Our Services</h2>
+
+<div class="features">
+
+    <div class="feature">
+        <h3>🏫 College Information</h3>
+        <p>Get college details and facilities.</p>
+    </div>
+
+    <div class="feature">
+        <h3>📅 Exam Schedule</h3>
+        <p>Check upcoming examinations.</p>
+    </div>
+
+    <div class="feature">
+        <h3>🎉 Programs</h3>
+        <p>View upcoming college events.</p>
+    </div>
+
+    <div class="feature">
+        <h3>📤 Assignments</h3>
+        <p>Submit your assignments.</p>
+    </div>
+
+    <div class="feature">
+        <h3>📊 Results</h3>
+        <p>Check examination results.</p>
+    </div>
+
+    <div class="feature">
+        <h3>📢 Announcements</h3>
+        <p>Stay updated with college news.</p>
+    </div>
+
+</div>
+</div>
+
+<!-- COLLEGE INFORMATION -->
+
+<div id="college" class="section">
+
+<div class="card">
+    <h2>About Our College</h2>
+
+    <p>
+    Our college provides quality education
+    and encourages students to develop
+    technical knowledge, creativity and
+    professional skills.
+    </p>
+
+    <h2>Departments</h2>
+
+    <ul>
+        <li>Computer Science and Engineering</li>
+        <li>Electronics and Communication Engineering</li>
+        <li>Electrical and Electronics Engineering</li>
+        <li>Civil Engineering</li>
+        <li>Mechanical Engineering</li>
+    </ul>
+
+    <h2>Facilities</h2>
+
+    <ul>
+        <li>Digital Library</li>
+        <li>Computer Laboratories</li>
+        <li>Seminar Hall</li>
+        <li>Sports Facilities</li>
+        <li>Smart Classrooms</li>
+    </ul>
+</div>
+</div>
+
+<!-- EXAM SCHEDULE -->
+
+<div id="exams" class="section">
+
+<div class="card">
+    <h2>Examination Schedule</h2>
+
+    <h3>Add Examination Schedule</h3>
+
+    <input id="examSubject" placeholder="Subject Name">
+    <input id="examDate" type="date">
+    <input id="examTime" type="time">
+    <input id="examHall" placeholder="Exam Hall">
+
+    <button class="submit" onclick="addExam()">
+        Add Exam
+    </button>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Subject</th>
+                <th>Date</th>
+                <th>Time</th>
+                <th>Hall</th>
+            </tr>
+        </thead>
+
+        <tbody id="examList"></tbody>
+    </table>
+</div>
+</div>
+
+<!-- PROGRAMS -->
+
+<div id="programs" class="section">
+
+<div class="card">
+    <h2>College Program Schedule</h2>
+
+    <h3>Add New Program</h3>
+
+    <input id="programName" placeholder="Program Name">
+    <input id="programDate" type="date">
+    <input id="programTime" type="time">
+    <input id="programVenue" placeholder="Venue">
+
+    <button class="submit" onclick="addProgram()">
+        Add Program
+    </button>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Program</th>
+                <th>Date</th>
+                <th>Time</th>
+                <th>Venue</th>
+            </tr>
+        </thead>
+
+        <tbody id="programList"></tbody>
+    </table>
+</div>
+</div>
+
+<!-- ASSIGNMENTS -->
+
+<div id="assignments" class="section">
+
+<div class="card">
+    <h2>Assignment Submission</h2>
+
+    <input id="assignmentTitle"
+    placeholder="Assignment Title">
+
+    <input id="studentName"
+    placeholder="Student Name">
+
+    <input type="file" id="assignmentFile">
+
+    <button class="submit" onclick="uploadAssignment()">
+        Submit Assignment
+    </button>
+
+    <h3 style="margin-top:20px;">
+        Submitted Assignments
+    </h3>
+
+    <ul id="assignmentList"></ul>
+
+</div>
+</div>
+
+<!-- RESULTS -->
+
+<div id="results" class="section">
+
+<div class="card">
+    <h2>Examination Results</h2>
+
+    <h3>Upload Student Results</h3>
+
+    <input id="resultName"
+    placeholder="Student Name">
+
+    <input id="registerNumber"
+    placeholder="Register Number">
+
+    <input id="resultSubject"
+    placeholder="Subject">
+
+    <input id="resultMark"
+    type="number"
+    min="0"
+    max="100"
+    placeholder="Enter Marks">
+
+    <button class="submit" onclick="uploadResult()">
+        Publish Result
+    </button>
+
+    <h3 style="margin-top:20px;">Published Results</h3>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Register No.</th>
+                <th>Subject</th>
+                <th>Marks</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+
+        <tbody id="resultList"></tbody>
+    </table>
+
+</div>
+</div>
+
+<!-- ANNOUNCEMENTS -->
+
+<div id="announcements" class="section">
+
+<div class="card">
+    <h2>College Announcements</h2>
+
+    <textarea id="announcementText"
+    placeholder="Write announcement here..."></textarea>
+
+    <button class="submit" onclick="addAnnouncement()">
+        Publish Announcement
+    </button>
+
+    <h3 style="margin-top:20px;">
+        Latest Announcements
+    </h3>
+
+    <ul id="announcementList"></ul>
+
+</div>
+</div>
+
+</div>
+
+<footer>
+    <p>Smart College Management System</p>
+    <p>Designed for College Project</p>
+</footer>
+
+<script>
+
+// PAGE NAVIGATION
+
+function showPage(page) {
+
+    document.querySelectorAll(".section").forEach(s => {
+        s.classList.remove("active");
+    });
+
+    document.getElementById(page).classList.add("active");
+
+}
+
+// DATA STORAGE
+
+let exams = JSON.parse(localStorage.getItem("exams")) || [];
+let programs = JSON.parse(localStorage.getItem("programs")) || [];
+let assignments = JSON.parse(localStorage.getItem("assignments")) || [];
+let results = JSON.parse(localStorage.getItem("results")) || [];
+let announcements = JSON.parse(localStorage.getItem("announcements")) || [];
+
+function save(key, data) {
+    localStorage.setItem(key, JSON.stringify(data));
+}
+
+function safe(value) {
+    return String(value).replace(/[&<>"']/g, c => ({
+        "&":"&amp;",
+        "<":"&lt;",
+        ">":"&gt;",
+        '"':"&quot;",
+        "'":"&#39;"
+    })[c]);
+}
+
+// EXAM SCHEDULE
+
+function addExam() {
+
+    let subject = document.getElementById("examSubject").value;
+    let date = document.getElementById("examDate").value;
+    let time = document.getElementById("examTime").value;
+    let hall = document.getElementById("examHall").value;
+
+    if(!subject || !date || !time || !hall) {
+        alert("Please fill all fields");
+        return;
+    }
+
+    exams.push({subject,date,time,hall});
+
+    save("exams",exams);
+
+    displayExams();
+
+    alert("Exam schedule added!");
+
+}
+
+function displayExams() {
+
+    document.getElementById("examList").innerHTML =
+    exams.map(e => `
+        <tr>
+        <td>${safe(e.subject)}</td>
+        <td>${safe(e.date)}</td>
+        <td>${safe(e.time)}</td>
+        <td>${safe(e.hall)}</td>
+        </tr>
+    `).join("");
+
+}
+
+// PROGRAM SCHEDULE
+
+function addProgram() {
+
+    let name = document.getElementById("programName").value;
+    let date = document.getElementById("programDate").value;
+    let time = document.getElementById("programTime").value;
+    let venue = document.getElementById("programVenue").value;
+
+    if(!name || !date || !time || !venue) {
+        alert("Please fill all fields");
+        return;
+    }
+
+    programs.push({name,date,time,venue});
+
+    save("programs",programs);
+
+    displayPrograms();
+
+    alert("Program added successfully!");
+
+}
+
+function displayPrograms() {
+
+    document.getElementById("programList").innerHTML =
+    programs.map(p => `
+        <tr>
+        <td>${safe(p.name)}</td>
+        <td>${safe(p.date)}</td>
+        <td>${safe(p.time)}</td>
+        <td>${safe(p.venue)}</td>
+        </tr>
+    `).join("");
+
+}
+
+// ASSIGNMENT UPLOAD
+
+function uploadAssignment() {
+
+    let title = document.getElementById("assignmentTitle").value;
+    let name = document.getElementById("studentName").value;
+    let file = document.getElementById("assignmentFile").files[0];
+
+    if(!title || !name || !file) {
+        alert("Please enter all details and select a file");
+        return;
+    }
+
+    assignments.push({
+        title,
+        name,
+        file:file.name
+    });
+
+    save("assignments",assignments);
+
+    displayAssignments();
+
+    alert("Assignment submitted successfully!");
+
+}
+
+function displayAssignments() {
+
+    document.getElementById("assignmentList").innerHTML =
+    assignments.map(a => `
+        <li>
+        ${safe(a.title)} - ${safe(a.name)}
+        - ${safe(a.file)}
+        </li>
+    `).join("");
+
+}
+
+// EXAM RESULTS
+
+function uploadResult() {
+
+    let name = document.getElementById("resultName").value;
+    let roll = document.getElementById("registerNumber").value;
+    let subject = document.getElementById("resultSubject").value;
+    let mark = document.getElementById("resultMark").value;
+
+    if(!name || !roll || !subject || mark === "" ||
+       Number(mark) < 0 || Number(mark) > 100) {
+        alert("Please enter valid result details");
+        return;
+    }
+
+    results.push({
+        name,
+        roll,
+        subject,
+        mark
+    });
+
+    save("results",results);
+
+    displayResults();
+
+    alert("Result published successfully!");
+
+}
+
+function displayResults() {
+
+    document.getElementById("resultList").innerHTML =
+    results.map(r => `
+        <tr>
+        <td>${safe(r.name)}</td>
+        <td>${safe(r.roll)}</td>
+        <td>${safe(r.subject)}</td>
+        <td>${safe(r.mark)}</td>
+        <td>${Number(r.mark)>=40 ? "Pass":"Fail"}</td>
+        </tr>
+    `).join("");
+
+}
+
+// ANNOUNCEMENTS
+
+function addAnnouncement() {
+
+    let text = document.getElementById("announcementText").value;
+
+    if(!text.trim()) {
+        alert("Please enter announcement");
+        return;
+    }
+
+    announcements.push(text);
+
+    save("announcements",announcements);
+
+    displayAnnouncements();
+
+    alert("Announcement published!");
+
+}
+
+function displayAnnouncements() {
+
+    document.getElementById("announcementList").innerHTML =
+    announcements.map(a => `
+        <li>${safe(a)}</li>
+    `).join("");
+
+}
+
+// LOAD SAVED DATA
+
+displayExams();
+displayPrograms();
+displayAssignments();
+displayResults();
+displayAnnouncements();
+
+</script>
+
+</body>
+</html>
