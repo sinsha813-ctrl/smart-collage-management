@@ -240,6 +240,36 @@ footer {
         <p>• Computer Laboratories</p>
         <p>• Seminar Hall</p>
         <p>• Sports Facilities</p>
+        <div class="section" id="accounts">
+
+    <div class="card">
+        <h2>Create New Account</h2>
+
+        <select id="newRole">
+            <option value="student">Student</option>
+            <option value="teacher">Teacher</option>
+        </select>
+
+        <input id="newName" placeholder="Full Name">
+
+        <input id="newRoll" placeholder="Register Number / Employee ID">
+
+        <input id="newUsername" placeholder="Create Username">
+
+        <input id="newPassword" type="password"
+        placeholder="Create Password">
+
+        <input id="newDepartment" placeholder="Department">
+
+        <button onclick="createAccount()">Create Account</button>
+    </div>
+
+    <div class="card">
+        <h2>Registered Accounts</h2>
+        <ul id="accountList"></ul>
+    </div>
+
+        </div>
     </div>
 
 </div>
