@@ -429,42 +429,67 @@ Manage Accounts
 <script>
 
 // LOGIN SYSTEM
+// Default admin account
+let users = JSON.parse(localStorage.getItem("users"));
 
-let currentRole = "";
+if (!users) {
+    users = [
+        {
+            name: "Admin Teacher",
+            role: "teacher",
+            id: "T001",
+            username: "teacher",
+            password: "teacher123",
+            department: "Computer Science"
+        }
+    ];
+
+    localStorage.setItem("users", JSON.stringify(users));
+}
+
+let currentUser = null;
 
 function login() {
 
     let role = document.getElementById("role").value;
-    let user = document.getElementById("username").value;
-    let pass = document.getElementById("password").value;
+    let username = document.getElementById("username").value;
+    let password = document.getElementById("password").value;
 
-    if (
-        (role === "student" && user === "sinsha" && pass === "sinsha123") ||
-        (role === "teacher" && user === "murshida" && pass === "murshida123")
-    ) {
+    let user = users.find(u =>
+        u.role === role &&
+        u.username === username &&
+        u.password === password
+    );
 
-        currentRole = role;
+    if (user) {
+
+        currentUser = user;
+        currentRole = user.role;
 
         document.getElementById("loginPage").style.display = "none";
-
         document.getElementById("dashboard").style.display = "block";
 
         document.getElementById("welcome").innerText =
-            "Logged in as: " + role.toUpperCase();
+            "Welcome, " + user.name;
 
-        if(role === "teacher") {
-            document.getElementById("examForm").style.display = "block";
-            document.getElementById("programForm").style.display = "block";
-            document.getElementById("resultForm").style.display = "block";
-            document.getElementById("announcementForm").style.display = "block";
-        } else {
-            document.getElementById("examForm").style.display = "none";
-            document.getElementById("programForm").style.display = "none";
-            document.getElementById("resultForm").style.display = "none";
-            document.getElementById("announcementForm").style.display = "none";
-        }
+        document.getElementById("accounts").style.display =
+            user.role === "teacher" ? "block" : "none";
+
+        document.getElementById("examForm").style.display =
+            user.role === "teacher" ? "block" : "none";
+
+        document.getElementById("programForm").style.display =
+            user.role === "teacher" ? "block" : "none";
+
+        document.getElementById("resultForm").style.display =
+            user.role === "teacher" ? "block" : "none";
+
+        document.getElementById("announcementForm").style.display =
+            user.role === "teacher" ? "block" : "none";
 
         showSection("home");
+
+        displayResults();
 
     } else {
 
@@ -472,8 +497,7 @@ function login() {
             "Invalid username or password!";
 
     }
-}
-
+    }
 // LOGOUT
 
 function logout() {
@@ -650,7 +674,57 @@ function uploadResult() {
     alert("Result uploaded successfully!");
 
 }
+function createAccount() {
 
+    if (!currentUser || currentUser.role !== "teacher") {
+        alert("Only teachers can create accounts!");
+        return;
+    }
+
+    let role = document.getElementById("newRole").value;
+    let name = document.getElementById("newName").value;
+    let id = document.getElementById("newRoll").value;
+    let username = document.getElementById("newUsername").value;
+    let password = document.getElementById("newPassword").value;
+    let department = document.getElementById("newDepartment").value;
+
+    if (!name || !id || !username || !password || !department) {
+        alert("Please fill all fields!");
+        return;
+    }
+
+    if (users.some(u => u.username === username || u.id === id)) {
+        alert("Username or ID already exists!");
+        return;
+    }
+
+    users.push({
+        name,
+        role,
+        id,
+        username,
+        password,
+        department
+    });
+
+    localStorage.setItem("users", JSON.stringify(users));
+
+    displayAccounts();
+
+    alert("Account created successfully!");
+
+}
+
+function displayAccounts() {
+
+    document.getElementById("accountList").innerHTML =
+        users.map(u =>
+        `<li>${escapeHTML(u.name)} -
+        ${escapeHTML(u.role)} -
+        ${escapeHTML(u.username)}</li>`
+        ).join("");
+
+    }
 function displayResults() {
 
     document.getElementById("resultList").innerHTML =
@@ -717,7 +791,7 @@ displayPrograms();
 displayAssignments();
 displayResults();
 displayAnnouncements();
-
+displayAccounts();
 </script>
 
 </body>
